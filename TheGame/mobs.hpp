@@ -37,11 +37,11 @@ std::vector<std::string > boss_1_sprites = { "sprites/Wraith_3/PNG Sequences/Tau
 struct lightMobs
 {
 	/// <summary>
-	/// Структура lightMobs описывает мобов (противников)
-	/// У каждого моба изначально есть такие параметры:
-	/// healthPoints - отвечает за текущее количество очков здоровья
-	/// standartHealthPoints - отвечает за то количество очков здоровья, с которым заспавнится моб
-	/// coins - отвечает за то количество монет, которое получит игрок, когда убьет данного моба
+	/// structure lightMobs defines mobs (enemies)
+	/// each mob has got some parameters:
+	/// healthPoints - responsible for the current number of health points
+	/// standartHealthPoints - responsible for the number of health points that the mob will spawn with
+	/// coins - responsible for the number of coins that the player will receive when he kills this mob
 	/// </summary>
 	int healthPoints = 10;
 	int standartHealthPoints = 10;
@@ -51,10 +51,10 @@ struct lightMobs
 	int levelUp()
 	{
 		/// <summary>
-		/// Функция не принимает на вход никаких параметров и отдает значение типа int
+		/// The function does not accept any parameters as input and returns an int value
 		/// </summary>
 		/// <returns>
-		/// При выполнении данной функции моб воскресает с большим количеством очков здоровья и монет в кармане
+		/// When you perform this function, the mob is resurrected with a large number of health points and coins in your pocket
 		/// </returns>
 		while (healthPoints < standartHealthPoints)
 			healthPoints += 1;
@@ -67,10 +67,10 @@ struct lightMobs
 	bool isNotAlive()
 	{
 		/// <summary>
-		/// Функция не принимает на вход никаких параметров и возвращает значение типа bool
+		/// The function does not accept any parameters as input and returns a bool value
 		/// </summary>
 		/// <returns>
-		/// Функция проверяет на наличие у моба очков здоровья и в зависимости от результата выводит либо "true", либо "false"
+		///	The function checks whether the mob has health points and, depending on the result, outputs either "true" or " false"
 		/// </returns>
 		if (healthPoints <= 0)
 			return true;
@@ -81,13 +81,13 @@ struct lightMobs
 	std::string getNextSprite(int n)
 	{
 		/// <summary>
-		/// Функция принимает на вход один параметр и отдает конкретный спрайт
+		/// The function takes one parameter as input and returns a specific sprite
 		/// </summary>
 		/// <param name="n"> 
-		/// Параметр отвечает за выбор конкретного спрайта для прорисовки
+		/// This parameter is responsible for selecting a specific sprite to draw
 		/// </param>
 		/// <returns>
-		/// Возвращает конкретный спрайт в формате std::string
+		/// Returns a specific sprite in the std::string format
 		/// </returns>
 		return sprites[n];
 	}
@@ -96,12 +96,12 @@ struct lightMobs
 struct boss
 {
     /// <summary>
-    /// Структура lightMobs описывает мобов (противников)
-    /// У каждого моба изначально есть такие параметры:
-    /// healthPoints - отвечает за текущее количество очков здоровья
-    /// standartHealthPoints - отвечает за то количество очков здоровья, с
-    /// которым заспавнится моб coins - отвечает за то количество монет, которое
-    /// получит игрок, когда убьет данного моба
+    /// structure boss defines mobs with an increased level of difficulty (enemies)
+    /// each mob has got some parameters:
+    /// healthPoints - responsible for the current number of health points
+    /// standartHealthPoints - responsible for the number of health points that
+    /// the mob will spawn with coins - responsible for the number of coins that
+    /// the player will receive when he kills this mob
     /// </summary>
 	int healthPoints = 100;
 	int coins = 100;
@@ -109,12 +109,14 @@ struct boss
 
 	int levelUp()
 	{
-		/// <summary>
-		/// Функция не принимает на вход никаких параметров и отдает значение типа int
-		/// </summary>
-		/// <returns>
-		/// При выполнении данной функции моб воскресает с большим количеством очков здоровья и монет в кармане
-		/// </returns>
+        /// <summary>
+        /// The function does not accept any parameters as input and returns
+        /// an int value
+        /// </summary>
+        /// <returns>
+        /// When you perform this function, the mob is resurrected with a
+        /// large number of health points and coins in your pocket
+        /// </returns>
 		healthPoints += 100;
 		coins += 100;
 		return 0;
@@ -122,12 +124,14 @@ struct boss
 
 	bool isNotAlive()
 	{
-		/// <summary>
-		/// Функция не принимает на вход никаких параметров и возвращает значение типа bool
-		/// </summary>
-		/// <returns>
-		/// Функция проверяет на наличие у моба очков здоровья и в зависимости от результата выводит либо "true", либо "false"
-		/// </returns>
+        /// <summary>
+        /// The function does not accept any parameters as input and returns
+        /// a bool value
+        /// </summary>
+        /// <returns>
+        ///	The function checks whether the mob has health points and,
+        ///depending on the result, outputs either "true" or " false"
+        /// </returns>
 		if (healthPoints <= 0)
 			return true;
 		else
@@ -138,10 +142,10 @@ struct boss
 class player
 {
 	/// <summary>
-	/// Класс Player описывает игрока у которого есть такие параметры:
-	/// damage - урон наносимый за один удар по мобу
-	/// coins - количество монет в кошельке (сейчас)
-	/// costOfUpgrade - стоимость улучшения оружия
+	/// The Player class describes a player that has these parameters:
+	/// damage - damage dealt per hit to a mob
+	/// coins - the number of coins in the wallet (now)
+	/// costOfUpgrade - the cost of improving weapons
 	/// </summary>
 	public:
 		int damage = 1;
@@ -151,10 +155,10 @@ class player
 		int swordUpgrade()
 		{
 			/// <summary>
-			/// Функция не принимает на вход никаких параметров и возвращает значение типа int
+			/// The function does not accept any parameters as input and returns an int value
 			/// </summary>
 			/// <returns>
-			/// Функция увеличивает урон игрока за один удар на одну единицу
+			/// The function increases the player's damage per hit by one unit
 			/// </returns>
 			damage += 1;
 			return 0;
@@ -163,10 +167,10 @@ class player
 		int costUpdate()
 		{
 			/// <summary>
-			/// Функция не принимает на вход никаких параметров и возвращает значение типа int
+			/// The function does not accept any parameters as input and returns an int value
 			/// </summary>
 			/// <returns>
-			/// Функция срабатывает после того, как игрок увеличил свой урон, чтобы поднять цену на следующее увеличение урона
+			/// The feature is triggered after the player has increased their damage to raise the price for the next damage increase
 			/// </returns>
 			costOfUpgrade += 10;
 			return 0;
