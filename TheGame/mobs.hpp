@@ -91,7 +91,7 @@ struct boss
     /// </summary>
 	int healthPoints = 100;
 	int coins = 100;
-	std::vector<std::string > sprites;
+    int standartHealthPoints = 100;
 
 	int levelUp()
 	{
@@ -103,14 +103,17 @@ struct boss
         /// When you perform this function, the mob is resurrected with a
         /// large number of health points and coins in your pocket
         /// </returns>
-		healthPoints += 100;
-		coins += 100;
-		return 0;
+        while (healthPoints < standartHealthPoints)
+            healthPoints += 1;
+        healthPoints += 100;
+        standartHealthPoints += 100;
+        coins += 100;
+        return 0;
 	}
 
 	bool isNotAlive()
 	{
-        /// <summary>
+        /// <summary>s
         /// The function does not accept any parameters as input and returns
         /// a bool value
         /// </summary>
