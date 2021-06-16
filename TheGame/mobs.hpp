@@ -77,20 +77,6 @@ struct lightMobs
 		else
 			return false;
 	}
-
-	std::string getNextSprite(int n)
-	{
-		/// <summary>
-		/// The function takes one parameter as input and returns a specific sprite
-		/// </summary>
-		/// <param name="n"> 
-		/// This parameter is responsible for selecting a specific sprite to draw
-		/// </param>
-		/// <returns>
-		/// Returns a specific sprite in the std::string format
-		/// </returns>
-		return sprites[n];
-	}
 };
 
 struct boss
@@ -161,6 +147,7 @@ class player
 			/// The function increases the player's damage per hit by one unit
 			/// </returns>
 			damage += 1;
+            coins -= costOfUpgrade;
 			return 0;
 		}
 

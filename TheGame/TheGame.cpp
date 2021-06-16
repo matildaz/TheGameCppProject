@@ -189,7 +189,6 @@ int main()
 
 						if (cursorPositionUp(position) == true & knight.coins >= knight.costOfUpgrade) // проверка на нажатие определенной области и необходимого количества монет на улучшение
 						{
-							knight.coins -= knight.costOfUpgrade;
 							knight.swordUpgrade();
 							knight.costUpdate();
 							std::string coinsStr = std::to_string(knight.coins);

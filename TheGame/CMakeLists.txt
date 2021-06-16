@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 3.8)
 
 # Добавьте источник в исполняемый файл этого проекта.
 add_executable(TheGame "TheGame.cpp")
-target_link_libraries(TheGame sfml-graphics sfml-window sfml-system)
+target_link_libraries(TheGame PUBLIC sfml-graphics sfml-window sfml-system)
 message("sourse: ${CMAKE_CURRENT_SOURCE_DIR}")
 message("sourse: ${CMAKE_CURRENT_BINARY_DIR}")
 
