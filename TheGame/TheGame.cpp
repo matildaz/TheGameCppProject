@@ -22,11 +22,8 @@ std::string texture_mob(int n, std::vector<std::string > mob)
 */
 bool cursorPosition(sf::Vector2i position)
 {
-	if ((position.x >= 200) && (position.x <= 600))
-	{
-		if (position.y >= 100 && position.y <= 550)
-			return true;
-	}
+    return (position.x >= 200) &
+           (position.x <= 600) & (position.y >= 100) & (position.y <= 550);
 }
 
 /**
@@ -37,11 +34,8 @@ bool cursorPosition(sf::Vector2i position)
  */
 bool cursorPositionInfo(sf::Vector2i position)
 {
-	if (position.x >= 703 && position.x <= 767)
-	{
-		if (position.y >= 35 && position.y <= 99)
-			return true;
-	}
+    return (position.x >= 703) & (position.x <= 767) & (position.y >= 35) &
+           (position.y <= 99);
 }
 /**
  * curcorPositionUp defines the position of cursor for upgrade button
@@ -51,12 +45,10 @@ bool cursorPositionInfo(sf::Vector2i position)
  */
 bool cursorPositionUp(sf::Vector2i position)
 {
-	if ((position.x >= 75) && (position.x <= 725))
-	{
-		if (position.y >= 859 && position.y <= 939)
-			return true;
-	}
+    return (position.x >= 75) & (position.x <= 725) & (position.y >= 859) &
+           (position.y <= 939);
 }
+
 
 /**
 * rendInfoWindow generates window with hints
