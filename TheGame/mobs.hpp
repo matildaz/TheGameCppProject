@@ -143,12 +143,10 @@ class player
 
 		int swordUpgrade()
 		{
-			/// <summary>
-			/// The function does not accept any parameters as input and returns an int value
-			/// </summary>
-			/// <returns>
-			/// The function increases the player's damage per hit by one unit
-			/// </returns>
+            /**
+			* function swordUpgrade() does not accept any parameters as input and returns an int value
+			* \return The function increases the player's damage per hit by one unit
+			*/
 			damage += 1;
             coins -= costOfUpgrade;
 			return 0;
