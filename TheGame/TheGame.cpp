@@ -215,7 +215,7 @@ int main()
 									hpStr = std::to_string(mob_1.healthPoints);
 								}
 
-								hpStr += " HP";if the mob dies, the player gets all the coins
+								hpStr += " HP"; 
 								text.setString(hpStr);
 								if (mob_1.isNotAlive()) // if the mob dies, the player gets all the coins
 								{
@@ -243,7 +243,7 @@ int main()
 								else
 								{
 									hpStr = std::to_string(mob_2.healthPoints);
-								}if the mob dies, the player gets all the coins
+								}
 								hpStr += " HP";
 								text.setString(hpStr);
 								if (mob_2.isNotAlive()) // if the mob dies, the player gets all the coins
