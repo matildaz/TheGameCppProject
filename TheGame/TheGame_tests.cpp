@@ -4,7 +4,7 @@
 
 TEST_CASE("Something works") { REQUIRE(3 == 3); };
 
-TEST_CASE("First test") {
+TEST_CASE("First structure upgrade test") {
     player knight;
     REQUIRE(knight.damage == 1);
     knight.coins += 10;
@@ -15,7 +15,7 @@ TEST_CASE("First test") {
     REQUIRE(knight.costOfUpgrade == 20);
 }
 
-TEST_CASE("Second test") { 
+TEST_CASE("Second structure kill test") { 
     player knight;
     lightMobs mob;
     mob.levelUp();
@@ -32,7 +32,7 @@ TEST_CASE("Second test") {
     REQUIRE(knight.coins == 10);
 }
 
-TEST_CASE("Third test") { 
+TEST_CASE("Third structure boss test") { 
     boss Boss;
     player knight;
     knight.coins = 49500;
