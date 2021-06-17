@@ -34,28 +34,29 @@ std::vector<std::string > boss_1_sprites = { "sprites/Wraith_3/PNG Sequences/Tau
 	"sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_014.png", "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_015.png", "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_016.png",
 	"sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_017.png" };
 
+/**
+ * structure lightMobs defines mobs (enemies)
+ * each mob has got some parameters:
+ * healthPoints - responsible for the current number of health points
+ * standartHealthPoints - responsible for the number of health points that the
+ * mob will spawn with coins - responsible for the number of coins that the
+ * player will receive when he kills this mob
+ */
 struct lightMobs
 {
-	/// <summary>
-	/// structure lightMobs defines mobs (enemies)
-	/// each mob has got some parameters:
-	/// healthPoints - responsible for the current number of health points
-	/// standartHealthPoints - responsible for the number of health points that the mob will spawn with
-	/// coins - responsible for the number of coins that the player will receive when he kills this mob
-	/// </summary>
 	int healthPoints = 10;
 	int standartHealthPoints = 10;
 	int coins = 5;
 	std::vector<std::string > sprites;
-
-	int levelUp()
+	
+	/**
+	* The function does not accept any parameters as input and returns an
+	* int value \return When you perform this function, the mob is
+	* resurrected with a large number of health points and coins in your
+	* pocket
+	*/
+int levelUp()
 	{
-		/// <summary>
-		/// The function does not accept any parameters as input and returns an int value
-		/// </summary>
-		/// <returns>
-		/// When you perform this function, the mob is resurrected with a large number of health points and coins in your pocket
-		/// </returns>
 		while (healthPoints < standartHealthPoints)
 			healthPoints += 1;
 		healthPoints += 10;
@@ -64,14 +65,14 @@ struct lightMobs
 		return 0;
 	}
 
+	/**
+    * The function does not accept any parameters as input and returns a
+    * bool value \return The function checks whether the mob has health
+    * points and, depending on the result, outputs either "true" or "
+    * false"
+    */
 	bool isNotAlive()
 	{
-		/// <summary>
-		/// The function does not accept any parameters as input and returns a bool value
-		/// </summary>
-		/// <returns>
-		///	The function checks whether the mob has health points and, depending on the result, outputs either "true" or " false"
-		/// </returns>
 		if (healthPoints <= 0)
 			return true;
 		else
@@ -79,30 +80,25 @@ struct lightMobs
 	}
 };
 
+/**
+* structure boss defines mobs with an increased level of difficulty (enemies)
+* each mob has got some parameters:
+* healthPoints - responsible for the current number of health points
+* standartHealthPoints - responsible for the number of health points that the mob will spawn with 
+* coins - responsible for the number of coins that the player will receive when he kills this mob
+*/
 struct boss
 {
-    /// <summary>
-    /// structure boss defines mobs with an increased level of difficulty (enemies)
-    /// each mob has got some parameters:
-    /// healthPoints - responsible for the current number of health points
-    /// standartHealthPoints - responsible for the number of health points that
-    /// the mob will spawn with coins - responsible for the number of coins that
-    /// the player will receive when he kills this mob
-    /// </summary>
 	int healthPoints = 100;
 	int coins = 100;
     int standartHealthPoints = 100;
 
-	int levelUp()
+	/**
+	* The function does not accept any parameters as input and returns an int value
+	* \return When you perform this function, the mob is resurrected with a large number of health points and coins in your pocket
+	*/
+	int levelUp() 
 	{
-        /// <summary>
-        /// The function does not accept any parameters as input and returns
-        /// an int value
-        /// </summary>
-        /// <returns>
-        /// When you perform this function, the mob is resurrected with a
-        /// large number of health points and coins in your pocket
-        /// </returns>
         while (healthPoints < standartHealthPoints)
             healthPoints += 1;
         healthPoints += 100;
@@ -111,16 +107,12 @@ struct boss
         return 0;
 	}
 
+	/**
+	* The function does not accept any parameters as input and returns a bool value
+	* \return The function checks whether the mob has health points and, depending on the result, outputs either "true" or " false"
+	*/
 	bool isNotAlive()
 	{
-        /// <summary>s
-        /// The function does not accept any parameters as input and returns
-        /// a bool value
-        /// </summary>
-        /// <returns>
-        ///	The function checks whether the mob has health points and,
-        ///depending on the result, outputs either "true" or " false"
-        /// </returns>
 		if (healthPoints <= 0)
 			return true;
 		else
@@ -128,38 +120,36 @@ struct boss
 	}
 };
 
+/**
+* The Player class describes a player that has these parameters: 
+* damage - damage dealt per hit to a mob
+* coins - the number of coins in the wallet (now)
+* costOfUpgrade - the cost of improving weapons
+*/
 class player
 {
-	/// <summary>
-	/// The Player class describes a player that has these parameters:
-	/// damage - damage dealt per hit to a mob
-	/// coins - the number of coins in the wallet (now)
-	/// costOfUpgrade - the cost of improving weapons
-	/// </summary>
 	public:
 		int damage = 1;
 		int coins = 0;
 		int costOfUpgrade = 10;
 
+		/**
+        * function swordUpgrade() does not accept any parameters as
+        * input and returns an int value \return The function increases the player's damage per hit by one unit
+        */
 		int swordUpgrade()
 		{
-            /**
-			* function swordUpgrade() does not accept any parameters as input and returns an int value
-			* \return The function increases the player's damage per hit by one unit
-			*/
 			damage += 1;
             coins -= costOfUpgrade;
 			return 0;
 		}
 
+		/**
+		* The function does not accept any parameters as input and returns an int value
+		* \return The feature is triggered after the player has increased their damage to raise the price for the next damage increase
+		*/
 		int costUpdate()
 		{
-			/// <summary>
-			/// The function does not accept any parameters as input and returns an int value
-			/// </summary>
-			/// <returns>
-			/// The feature is triggered after the player has increased their damage to raise the price for the next damage increase
-			/// </returns>
 			costOfUpgrade += 10;
 			return 0;
 		}

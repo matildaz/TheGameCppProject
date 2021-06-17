@@ -21,4 +21,12 @@ add_subdirectory(external/doctest)
 include(external/doctest/doctest.cmake)
 include_directories(external/doctest)
 
+#set(DOXYGEN_GENERATE_XML YES)
+#set(DOXYGEN_GENERATE_TREEVIEW YES)
+#set(DOXYGEN_SOURCE_BROWSER YES)
+#set(DOXYGEN_INLINE_SOURCES YES)
+#set(DOXYGEN_HTML_EXTRA_STYLESHEET doxygen-awesome.css)
+#find_package(Doxygen)
+#doxygen_add_docs(Doxygen src)
+
 add_subdirectory ("TheGame")

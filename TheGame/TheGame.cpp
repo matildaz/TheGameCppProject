@@ -4,24 +4,24 @@
 #include "vector"
 #include "memory"
 
+/**
+* texture_mob gets a number and an array with sprites and outputs a specific sprite in the output
+* \param n - an int type variable that points to the sprite number
+* \param mob - variable of type std::vector<std:: string> having a certain number of sprites not exceeding "n"
+* \return The function outputs a sprite with the number "n" from the array "mob" in std::vector<std:: string> type
+*/
 std::string texture_mob(int n, std::vector<std::string > mob)
 {
-	/// <summary>
-	/// Функция получает число и массив со спрайтами и выдает конкретный спрайт на выходе
-	/// </summary>
-	/// <param name="n"> переменная типа int указывающая на номер спрайта </param>
-	/// <param name="mob"> переменная типа std::vector<std::string> имеющая в себе некоторое количество спрайтов не превосходщее "n"</param>
-	/// <returns> Функция выдает на выходе спрайт с номером "n" из массива "mob" </returns>
 	return mob[n];
 }
 
+/**
+* curcorPosition defines the position of cursor
+* \param position - a variable of type sf:: Vector2i containing the cursor coordinates
+* \return The function returns "true" if the cursor is in the specified area and "false" if the cursor is not there
+*/
 bool cursorPosition(sf::Vector2i position)
 {
-	/// <summary>
-	/// Функция определения позиции курсора
-	/// </summary>
-	/// <param name="position"> переменная типа sf::Vector2i содержащая в себе координаты курсора </param>
-	/// <returns> Функция выдает "true" если курсор находится в заданной площади и "false" если курсор там не находится </returns>
 	if ((position.x >= 200) && (position.x <= 600))
 	{
 		if (position.y >= 100 && position.y <= 550)
@@ -29,27 +29,28 @@ bool cursorPosition(sf::Vector2i position)
 	}
 }
 
+/**
+ * curcorPositionInfo defines the position of cursor for info icon
+ * \param position - a variable of type sf:: Vector2i containing the cursor
+ * coordinates \return The function returns "true" if the cursor is in the
+ * specified area and "false" if the cursor is not there
+ */
 bool cursorPositionInfo(sf::Vector2i position)
 {
-	/// <summary>
-	/// Функция определения позиции курсора
-	/// </summary>
-	/// <param name="position"> переменная типа sf::Vector2i содержащая в себе координаты курсора </param>
-	/// <returns> Функция выдает "true" если курсор находится в заданной площади и "false" если курсор там не находится </returns>
 	if (position.x >= 703 && position.x <= 767)
 	{
 		if (position.y >= 35 && position.y <= 99)
 			return true;
 	}
 }
-
+/**
+ * curcorPositionUp defines the position of cursor for upgrade button
+ * \param position - a variable of type sf:: Vector2i containing the cursor
+ * coordinates \return The function returns "true" if the cursor is in the
+ * specified area and "false" if the cursor is not there
+ */
 bool cursorPositionUp(sf::Vector2i position)
 {
-	/// <summary>
-	/// Функция определения позиции курсора
-	/// </summary>
-	/// <param name="position"> переменная типа sf::Vector2i содержащая в себе координаты курсора </param>
-	/// <returns> Функция выдает "true" если курсор находится в заданной площади и "false" если курсор там не находится </returns>
 	if ((position.x >= 75) && (position.x <= 725))
 	{
 		if (position.y >= 859 && position.y <= 939)
@@ -57,37 +58,37 @@ bool cursorPositionUp(sf::Vector2i position)
 	}
 }
 
+/**
+* rendInfoWindow generates window with hints
+* \return new window with hints and variable 0 
+*/
 int rendInfoWindow()
 {
-	/// <summary>
-	/// Функция по созданию всплывающего окна информации
-	/// </summary>
-	/// <returns> возвращает переменную типа int </returns>
-	sf::RenderWindow infoWindow(sf::VideoMode(500, 400), "Information"); // генерация окна
+	sf::RenderWindow infoWindow(sf::VideoMode(500, 400), "Information"); // generating a window
 
-	sf::Font font; // создание шрифта
-	sf::Text text; // создание текста
-	font.loadFromFile("Fonts/BalooTammudu2-Bold.ttf"); // загрузка шрифта
-	text.setFont(font); // совмещение шрифта и текста
-	text.setCharacterSize(20); // установка размера текста
-	text.setFillColor(sf::Color::Black); // установка цвета тектса
-	text.setStyle(sf::Text::Bold); // установка стиля текста
-	text.setPosition(20, 20); // утановка позиции текста
+	sf::Font font; // creating a font
+	sf::Text text; // creating text
+	font.loadFromFile("Fonts/BalooTammudu2-Bold.ttf"); // loading the font
+	text.setFont(font); // combining font and text
+	text.setCharacterSize(20); // setting the text size
+	text.setFillColor(sf::Color::Black); // setting the text color
+	text.setStyle(sf::Text::Bold); // setting the text style
+	text.setPosition(20, 20); // setting the text position
 	text.setString("May the force be with you, knight!\nHere are some things\nyou need to know:\n1) First of all - do not\ngive mobs chance to stay alive\n2) If you want to upgrade your sward -\njust klick on button with the cost of upgade\n3) Kill them all!");
-	// написание самого текста
+	// writing a text
 
-	while (infoWindow.isOpen()) // открытие окна (пока окно открыто)...
+	while (infoWindow.isOpen()) //	opening a window (while the window is open)...
 	{
-		sf::Event event; // создание события
-		while (infoWindow.pollEvent(event)) // распознование событий
+		sf::Event event; // creating an event
+		while (infoWindow.pollEvent(event)) // event recognition
 		{
-			if (event.type == sf::Event::Closed) // есди событие равно закрытию окна, то окно закрывается
+			if (event.type == sf::Event::Closed) // if the event is equal to closing the window, the window is closed
 				infoWindow.close();
 		}
 
-		infoWindow.clear(sf::Color::White); // очищение окна
-		infoWindow.draw(text); // прорисовка текста
-		infoWindow.display(); // отображениие всего нарисованого в окне
+		infoWindow.clear(sf::Color::White); // clearing the window
+		infoWindow.draw(text); // drawing text
+		infoWindow.display(); // displaying everything drawn in the window
 	}
 
 	return 0;
@@ -95,32 +96,32 @@ int rendInfoWindow()
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 1000), "My window"); // создание игрового окна
+	sf::RenderWindow window(sf::VideoMode(800, 1000), "My window"); // creating a game window
 
-	// задний фон
-	sf::Texture background; // генерация текстуры заднего фона
-	background.loadFromFile("sprites/background/Group 7backgroundV1.png"); // загрузка текстуры из файла
-	sf::Sprite backgroundSprite; // создание спрайта
-	backgroundSprite.setTexture(background); // отображение текстуры в виде спрайта
+	// background
+	sf::Texture background; // generating background texture
+	background.loadFromFile("sprites/background/Group 7backgroundV1.png"); // loading a texture from a file
+	sf::Sprite backgroundSprite; // creating a sprite
+	backgroundSprite.setTexture(background); // displaying a texture as a sprite
 
-	// переменные
-	bool block = false; // переменная отвечает за нажатие клавиши (если false - не нажата, true - нажата)
-	int n = 0; // переменная отвечает за номер спрайта
-	int cntMinoyaur = 0; // 
-	int cntMob = 0; //
+	// variables
+	bool block = false; // the variable is responsible for pressing the key (if false-not pressed, true-pressed)
+	int n = 0; // the variable is responsible for the sprite number
+	int cntMinoyaur = 0; // has been used in earlier versions
+	int cntMob = 0; // has been used in earlier versions
 
 	// Player and mobs
-	player knight; // создание игрока
-	lightMobs mob_1; // создание первого моба
-	lightMobs mob_2; // создание второго моба
-	lightMobs mob_3; // создание третьего моба
-	boss boss_1; // создание босса
+	player knight; // creating a player
+	lightMobs mob_1; // creating a mob
+	lightMobs mob_2; // creating a mob
+	lightMobs mob_3; // creating a mob
+	boss boss_1; // creating a boss
 
-	// Спрайты и текстуры
+	// Sprites and textures
 	sf::Sprite sprite;
 	sf::Texture texture;
 
-	/// <Тексты и шрифты>
+	// Texts and fonts
 	sf::Font font;
 	sf::Text text;
 	font.loadFromFile("Fonts/BalooTammudu2-Bold.ttf");
@@ -157,37 +158,36 @@ int main()
 	bossIsNow.setFillColor(sf::Color::Red);
 	bossIsNow.setStyle(sf::Text::Bold);
 	bossIsNow.setPosition(310, 50);
-	/// </Тексты и шрифты>
 
-	while (window.isOpen()) // открытие игрового окна
+	while (window.isOpen()) // opening the game window
 	{
-		window.clear(sf::Color::White); // очищение экрана 
-		window.draw(backgroundSprite); // зарисовка фона
+		window.clear(sf::Color::White); // clearing the screen
+		window.draw(backgroundSprite); // drawing the background
 
-		// проверка всех событий окна, которые были запущены с момента последней итерации цикла
+		// checking all window events that have been triggered since the last iteration of the loop
 		sf::Event event;
 
 		while (window.pollEvent(event))
 		{
-			// закрытие окна при нажатии на кнопку закрытия
+			// closing the window when you click the close button
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			// проверка на нажатие клавиши на мышке
+			// checking for mouse keystrokes
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				if (!block) // если клавиша уже зажата, то программа не заходит в данный if
+				if (!block) // if the key is already pressed, the program does not enter this if
 				{
-					block = true; // блокировка постоянного нажатия
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // проверка на наатие левой клавиши мыши
+					block = true; // blocking constant pressing
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // checking for left mouse button clicks
 					{
-						sf::Vector2i position = sf::Mouse::getPosition(window); // вычисление позиции курора
-						if (cursorPositionInfo(position) == true) // если пользователь нажал на иконку информации, то открывается окно помощи
+						sf::Vector2i position = sf::Mouse::getPosition(window); // calculating the cursor position
+						if (cursorPositionInfo(position) == true) // if the user clicked on the information icon, the help window opens
 						{
 							rendInfoWindow();
 						}
 
-						if (cursorPositionUp(position) == true & knight.coins >= knight.costOfUpgrade) // проверка на нажатие определенной области и необходимого количества монет на улучшение
+						if (cursorPositionUp(position) == true & knight.coins >= knight.costOfUpgrade) // check for clicking a certain area and the required number of coins to improve
 						{
 							knight.swordUpgrade();
 							knight.costUpdate();
@@ -197,11 +197,11 @@ int main()
 						}
 					}
 
-					if (mob_1.isNotAlive() == false) // проверка на наличие очков здоровья у первого моба
+					if (mob_1.isNotAlive() == false) // check for health points for the first mob
 					{
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // проверка на наатие левой клавиши мыши
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // checking for left mouse button clicks
 						{
-							sf::Vector2i position = sf::Mouse::getPosition(window); // вычисление позиции курора
+							sf::Vector2i position = sf::Mouse::getPosition(window); // calculating the cursor position
 							if (cursorPosition(position) == true)
 							{
 								mob_1.healthPoints -= knight.damage;
@@ -215,9 +215,9 @@ int main()
 									hpStr = std::to_string(mob_1.healthPoints);
 								}
 
-								hpStr += " HP";
+								hpStr += " HP";if the mob dies, the player gets all the coins
 								text.setString(hpStr);
-								if (mob_1.isNotAlive()) // если моб погибает, то игроку достаются все монеты
+								if (mob_1.isNotAlive()) // if the mob dies, the player gets all the coins
 								{
 									knight.coins += mob_1.coins;
 									std::string coinsStr = std::to_string(knight.coins);
@@ -227,11 +227,11 @@ int main()
 							}
 						}
 					}
-					else if (mob_2.isNotAlive() == false) // если первый моб мертв, идет проверка на наличие очков здоровья у второго моба
+					else if (mob_2.isNotAlive() == false) // if the first mob is dead, the second mob is checked for health points.
 					{
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // проверка на наатие левой клавиши мыши
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // checking for left mouse button clicks
 						{
-							sf::Vector2i position = sf::Mouse::getPosition(window); // вычисление позиции курора
+							sf::Vector2i position = sf::Mouse::getPosition(window); // calculating the cursor position
 							if (cursorPosition(position) == true)
 							{
 								mob_2.healthPoints -= knight.damage;
@@ -243,11 +243,10 @@ int main()
 								else
 								{
 									hpStr = std::to_string(mob_2.healthPoints);
-								}
-
+								}if the mob dies, the player gets all the coins
 								hpStr += " HP";
 								text.setString(hpStr);
-								if (mob_2.isNotAlive()) // если моб погибает, то игроку достаются все монеты
+								if (mob_2.isNotAlive()) // if the mob dies, the player gets all the coins
 								{
 									knight.coins += mob_2.coins;
 									std::string coinsStr = std::to_string(knight.coins);
@@ -257,11 +256,11 @@ int main()
 							}
 						}
 					}
-					else if (mob_3.isNotAlive() == false) // если второй моб погибает, то идет проверка на наличие очков здоровья у третьего моба
+					else if (mob_3.isNotAlive() == false) // if the second mob dies, the third mob is checked for health points.
 					{
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // проверка на наатие левой клавиши мыши
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // checking for left mouse button clicks
 						{
-							sf::Vector2i position = sf::Mouse::getPosition(window); // вычисление позиции курора
+							sf::Vector2i position = sf::Mouse::getPosition(window); // calculating the cursor position
 							if (cursorPosition(position) == true)
 							{
 								mob_3.healthPoints -= knight.damage;
@@ -277,7 +276,7 @@ int main()
 
 								hpStr += " HP";
 								text.setString(hpStr);
-								if (mob_3.isNotAlive()) // если моб погибает, то игроку достаются все монеты
+								if (mob_3.isNotAlive()) // if the mob dies, the player gets all the coins
 								{
 									knight.coins += mob_3.coins;
 									std::string coinsStr = std::to_string(knight.coins);
@@ -288,11 +287,11 @@ int main()
 						}
 					}
 
-					if (mob_3.isNotAlive() == true) // если все мобы погибли, то на их место приходит БОСС
+					if (mob_3.isNotAlive() == true) // if all the mobs are dead, then the BOSS comes in their place
 					{
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // проверка на наатие левой клавиши мыши
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // checking for left mouse button clicks
 						{
-							sf::Vector2i position = sf::Mouse::getPosition(window); // вычисление позиции курора
+							sf::Vector2i position = sf::Mouse::getPosition(window); // calculating the cursor position
 							if (cursorPosition(position) == true)
 							{
 								boss_1.healthPoints -= knight.damage;
@@ -308,7 +307,7 @@ int main()
 
 								hpStr += " HP";
 								text.setString(hpStr);
-								if (boss_1.isNotAlive()) // если босс погибает, то игроку достается клад, а все мобы и сам босс воскрешаются, но с большим количеством очков здоровья
+								if (boss_1.isNotAlive()) // if the boss dies, the player will get the treasure, and all the mobs and the boss himself will be resurrected, but with more health points
 								{
 									knight.coins += boss_1.coins;
 									std::string coinsStr = std::to_string(knight.coins);
@@ -326,45 +325,45 @@ int main()
 				}
 			}
 
-			if (event.type == sf::Event::MouseButtonReleased) // если клавиша отжимается, то блокировка с зажимания снимается до повторного нажатия
+			if (event.type == sf::Event::MouseButtonReleased) // if the key is pressed, the lock is released from the clamping until it is pressed again
 			{
 				block = false;
 			}
 		}
 
-		sf::Cursor cursor; // создание курсора как отдельного объекта
-		if (cursor.loadFromSystem(sf::Cursor::Hand)) // отдельная прорисовка курсора
+		sf::Cursor cursor; // creating a cursor as a separate object
+		if (cursor.loadFromSystem(sf::Cursor::Hand)) // separate cursor drawing
 			window.setMouseCursor(cursor);
 
-		if (mob_1.isNotAlive() == false) // пока первый моб жив, идет его прорисовка 
+		if (mob_1.isNotAlive() == false) // while the first mob is alive, it is being drawn
 		{
-			// загрузка текстуры моба из файла
+			// loading a mob texture from a file
 			texture.loadFromFile(minotaur_1_stand[n]);
 			sprite.setTexture(texture);
 			sprite.setPosition(0, 105);
 		}
-		else if (mob_2.isNotAlive() == false) // пока второй моб жив, идет его прорисовка
+		else if (mob_2.isNotAlive() == false) // while the second mob is alive, it is being drawn
 		{
-			// загрузка текстуры моба из файла
+			// loading a mob texture from a file
 			texture.loadFromFile(minotaur_2_stand[n]);
 			sprite.setTexture(texture);
 			sprite.setPosition(0, 105);
 		}
-		else if (mob_3.isNotAlive() == false) // пока третий моб жив, идет его прорисовка
+		else if (mob_3.isNotAlive() == false) // while the third mob is alive, it is being drawn
 		{
-			// загрузка текстуры моба из файла
+			// loading a mob texture from a file
 			texture.loadFromFile(minotaur_3_stand[n]);
 			sprite.setTexture(texture);
 			sprite.setPosition(0, 105);
 		}
 
-		// написание текста с показателями урона за один удар
+		// writing a text with damage indicators per hit
 		std::string damageStr = std::to_string(knight.damage);
 		damageStr += " per one hit";
 		playerDamage.setString(damageStr);
 		playerCostOfUpgrade.setString(std::to_string(knight.costOfUpgrade) + " coins to upgrade your sword");
 
-		if (mob_3.isNotAlive() == true) // пока босс жив, идет его прорисовка
+		if (mob_3.isNotAlive() == true) // while the boss is alive, it is being drawn
 		{
 			bossIsNow.setString("BOSS");
 			window.draw(bossIsNow);
@@ -373,18 +372,18 @@ int main()
 			sprite.setPosition(100, 200);
 		}
 
-		// зарисовки отдельных объектов
+		// sketches of individual objects
 		window.draw(text);
 		window.draw(sprite);
 		window.draw(playerCoins);
 		window.draw(playerDamage);
 		window.draw(playerCostOfUpgrade);
 
-		// отображение объектов на экране
+		// displaying objects on the screen
 		window.display();
 
 		n += 1;
-		if (n > 17) // увеличение номера спрайта
+		if (n > 17) // increasing the sprite number
 			n = 0;
 
 	}
